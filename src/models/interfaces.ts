@@ -1,14 +1,26 @@
 export interface ITracking {
-  number: string | null;
-  status: string | null;
-  cityRecipient: string | null;
-  warehouseRecipient: string | null;
-  citySender: string | null;
-  warehouseSender: string | null;
+  number: string;
+  status: string;
+  cityRecipient: string;
+  warehouseRecipient: string;
+  citySender: string;
+  warehouseSender: string;
 }
 
-export interface ITrackingReducerInitialState {
+export interface IWarehousesTypes {
+  Ref: string;
+  Description: string;
+  DescriptionRu?: string;
+}
+
+export interface ITrackingReducerState {
   tracking: ITracking | null;
-  loading: boolean;
-  error: string | null;
+  trackingLoading: boolean;
+  trackingError: string | null;
+}
+
+export interface IWarehousesTypesReducerState {
+  warehousesTypes: IWarehousesTypes | null;
+  warehousesTypesLoading: boolean;
+  warehousesTypesError: string | null;
 }

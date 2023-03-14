@@ -1,20 +1,29 @@
 import { useEffect } from "react";
+import { fetchWarehousesTypes } from "./api/getWarehousesTypes";
 import { fetchTracking } from "./api/trackingApi";
+import { test } from "./api/warehousesApi";
 import { useAppDispatch } from "./hooks/dispatch";
 import { useAppSelector } from "./hooks/selector";
 
 const num = "20450638954971";
+const city = "Київ";
 
 function App() {
-  const { tracking, loading, error } = useAppSelector(
+  const dispatch = useAppDispatch();
+
+  const { tracking, trackingError, trackingLoading } = useAppSelector(
     (state) => state.tracking
   );
-  console.log(tracking, loading, error);
 
-  const dispatch = useAppDispatch();
+  const { warehousesTypes, warehousesTypesLoading, warehousesTypesError } =
+    useAppSelector((state) => state.warehousesTypes);
+
+  console.log(warehousesTypes);
 
   useEffect(() => {
     dispatch(fetchTracking(num));
+    test(city);
+    dispatch(fetchWarehousesTypes());
   }, [dispatch, num]);
 
   return (

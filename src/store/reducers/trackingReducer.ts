@@ -1,14 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchTracking } from "../../api/trackingApi";
-import {
-  ITracking,
-  ITrackingReducerInitialState,
-} from "../../models/interfaces";
+import { ITracking, ITrackingReducerState } from "../../models/interfaces";
 
-const initialState: ITrackingReducerInitialState = {
+const initialState: ITrackingReducerState = {
   tracking: null,
-  loading: false,
-  error: null,
+  trackingLoading: false,
+  trackingError: null,
 };
 
 const trackingSlice = createSlice({
@@ -18,20 +15,20 @@ const trackingSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchTracking.pending.type, (state) => {
-        state.loading = true;
+        state.trackingLoading = true;
       })
       .addCase(
         fetchTracking.fulfilled.type,
         (state, action: PayloadAction<ITracking>) => {
-          state.loading = false;
+          state.trackingLoading = false;
           state.tracking = action.payload;
         }
       )
       .addCase(
         fetchTracking.rejected.type,
         (state, action: PayloadAction<string>) => {
-          state.loading = false;
-          state.error = action.payload;
+          state.trackingLoading = false;
+          state.trackingError = action.payload;
         }
       );
   },
