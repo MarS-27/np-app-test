@@ -4,6 +4,8 @@ import { fetchTracking } from "./api/trackingApi";
 import { fetchWarehouses } from "./api/warehousesApi";
 import { useAppDispatch } from "./hooks/dispatch";
 import { useAppSelector } from "./hooks/selector";
+import { RouterProvider } from "react-router-dom";
+import { routing } from "./router/routing";
 
 const num = "20450638954971";
 const city = "Київ";
@@ -31,11 +33,7 @@ function App() {
     dispatch(fetchWarehousesTypes());
   }, [dispatch, num]);
 
-  return (
-    <div className="App">
-      <p>Hello!</p>
-    </div>
-  );
+  return <RouterProvider router={routing} />;
 }
 
 export default App;
