@@ -7,6 +7,10 @@ export interface ITracking {
   warehouseSender: string;
 }
 
+export interface IWarehouses {
+  description: string;
+}
+
 export interface IWarehousesTypes {
   Ref: string;
   Description: string;
@@ -17,6 +21,12 @@ export interface ITrackingReducerState {
   tracking: ITracking | null;
   trackingLoading: boolean;
   trackingError: string | null;
+}
+
+export interface IWarehousesReducerState {
+  warehouses: IWarehouses | null;
+  warehousesLoading: boolean;
+  warehousesError: string | null;
 }
 
 export interface IWarehousesTypesReducerState {

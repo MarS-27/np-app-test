@@ -19,12 +19,9 @@ export const fetchWarehousesTypes = createAsyncThunk<
     });
 
     if (response.data.success) {
-      return response.data.data.map((elem: IWarehousesTypes) => {
-        return {
-          Ref: elem.Ref,
-          Description: elem.Description,
-        };
-      });
+      return response.data.data.filter((elem: IWarehousesTypes) =>
+        elem.Description.includes("відділення")
+      );
     } else {
       return response.data.errors[0];
     }
