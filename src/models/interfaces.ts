@@ -34,3 +34,18 @@ export interface IWarehousesTypesReducerState {
   warehousesTypesLoading: boolean;
   warehousesTypesError: string | null;
 }
+
+export interface ICustomTheme {
+  palette: {
+    primary: {
+      main: string;
+    };
+    secondary: {
+      main: string;
+    };
+    background: {
+      default: string;
+      paper: string;
+    };
+  };
+}

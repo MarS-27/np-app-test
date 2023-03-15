@@ -6,6 +6,9 @@ import { useAppDispatch } from "./hooks/dispatch";
 import { useAppSelector } from "./hooks/selector";
 import { RouterProvider } from "react-router-dom";
 import { routing } from "./router/routing";
+import { ThemeProvider } from "@mui/system";
+import { CssBaseline } from "@mui/material";
+import { theme } from "./theme/theme";
 
 const num = "20450638954971";
 const city = "Київ";
@@ -33,7 +36,12 @@ function App() {
     dispatch(fetchWarehousesTypes());
   }, [dispatch, num]);
 
-  return <RouterProvider router={routing} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <RouterProvider router={routing} />
+    </ThemeProvider>
+  );
 }
 
 export default App;

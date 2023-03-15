@@ -21,3 +21,8 @@ code {
 a {
   text-decoration: none;
 }
+
+.active p,
+.active button {
+  color: #c9c9c9;
+}

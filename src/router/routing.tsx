@@ -13,7 +13,7 @@ export const routing = createBrowserRouter([
         element: <TrackingPage />,
       },
       {
-        path: "warehouses",
+        path: "/warehouses",
         element: <WarehousesPage />,
       },
     ],
