@@ -3,6 +3,7 @@ import { fetchTracking } from "../api/trackingApi";
 import { useAppDispatch } from "../hooks/dispatch";
 import Box from "@mui/material/Box";
 import TrackingInfo from "../components/tracking/TrackingInfo";
+import PageInput from "../components/input/pageInput";
 
 const num = "20450638954971";
 
@@ -18,6 +19,7 @@ export default function TrackingPage() {
       component="section"
       sx={{ width: "90%", margin: "0 auto", paddingTop: "40px" }}
     >
+      <PageInput />
       <TrackingInfo />
     </Box>
   );

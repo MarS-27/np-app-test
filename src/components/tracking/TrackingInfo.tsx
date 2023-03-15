@@ -13,7 +13,7 @@ export default function TrackingInfo() {
       sx={{
         width: "100%",
         padding: "20px",
-        borderColor: "secondary.main",
+        borderColor: "primary.main",
         borderWidth: "2px",
         borderStyle: "solid",
         borderRadius: "6px",
