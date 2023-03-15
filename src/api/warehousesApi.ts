@@ -22,7 +22,6 @@ export const fetchWarehouses = createAsyncThunk<
         TypeOfWarehouseRef: typeOFWarehouse,
       },
     });
-    console.log(response);
 
     if (response.data.success) {
       return response.data.data.map((elem: Record<string, any>) => {

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { fetchWarehousesTypes } from "./api/getWarehousesTypes";
-import { fetchTracking } from "./api/trackingApi";
+
 import { fetchWarehouses } from "./api/warehousesApi";
 import { useAppDispatch } from "./hooks/dispatch";
 import { useAppSelector } from "./hooks/selector";
@@ -10,7 +10,6 @@ import { ThemeProvider } from "@mui/system";
 import { CssBaseline } from "@mui/material";
 import { theme } from "./theme/theme";
 
-const num = "20450638954971";
 const city = "Київ";
 const typeOFWarehouse = "6f8c7162-4b72-4b0a-88e5-906948c6a92f";
 
@@ -31,10 +30,9 @@ function App() {
   // // console.log(warehouses);
 
   useEffect(() => {
-    dispatch(fetchTracking(num));
     dispatch(fetchWarehouses([city, typeOFWarehouse]));
     dispatch(fetchWarehousesTypes());
-  }, [dispatch, num]);
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={theme}>
