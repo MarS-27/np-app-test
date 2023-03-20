@@ -5,13 +5,18 @@ import { ITracking, ITrackingReducerState } from "../../models/interfaces";
 const initialState: ITrackingReducerState = {
   tracking: null,
   trackingLoading: false,
-  trackingError: null,
+  trackingError: "",
 };
 
 const trackingSlice = createSlice({
   name: "tracking",
   initialState,
-  reducers: {},
+  reducers: {
+    cleanTracking: (state) => {
+      state.tracking = null;
+      state.trackingError = "";
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchTracking.pending.type, (state) => {
@@ -21,7 +26,11 @@ const trackingSlice = createSlice({
         fetchTracking.fulfilled.type,
         (state, action: PayloadAction<ITracking>) => {
           state.trackingLoading = false;
-          state.tracking = action.payload;
+          if (typeof action.payload === "object") {
+            state.tracking = action.payload;
+          } else {
+            state.trackingError = action.payload;
+          }
         }
       )
       .addCase(
@@ -33,5 +42,7 @@ const trackingSlice = createSlice({
       );
   },
 });
+
+export const { cleanTracking } = trackingSlice.actions;
 
 export default trackingSlice.reducer;

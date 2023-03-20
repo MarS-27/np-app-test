@@ -1,12 +1,9 @@
 import { useAppSelector } from "../../hooks/selector";
-
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 export default function TrackingInfo() {
-  const { tracking, trackingError, trackingLoading } = useAppSelector(
-    (state) => state.tracking
-  );
+  const { tracking } = useAppSelector((state) => state.tracking);
 
   return (
     <Box

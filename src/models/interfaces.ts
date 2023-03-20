@@ -20,19 +20,19 @@ export interface IWarehousesTypes {
 export interface ITrackingReducerState {
   tracking: ITracking | null;
   trackingLoading: boolean;
-  trackingError: string | null;
+  trackingError: string;
 }
 
 export interface IWarehousesReducerState {
   warehouses: IWarehouses | null;
   warehousesLoading: boolean;
-  warehousesError: string | null;
+  warehousesError: string;
 }
 
 export interface IWarehousesTypesReducerState {
   warehousesTypes: IWarehousesTypes | null;
   warehousesTypesLoading: boolean;
-  warehousesTypesError: string | null;
+  warehousesTypesError: string;
 }
 
 export interface ICustomTheme {
@@ -48,4 +48,8 @@ export interface ICustomTheme {
       paper: string;
     };
   };
+}
+
+export interface IDocumentNumber {
+  docNumber: string;
 }

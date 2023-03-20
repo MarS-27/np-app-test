@@ -24,7 +24,16 @@ export const fetchTracking = createAsyncThunk<
       },
     });
 
-    if (response.data.success) {
+    if (!response.data.success) {
+      return response.data.errors[0];
+    } else if (response.data.data[0].Status === "Номер не найден") {
+      return "Номер посилки не знайдено";
+    } else {
+      localStorage.setItem(
+        response.data.data[0].Number,
+        response.data.data[0].Number
+      );
+
       return {
         number: response.data.data[0].Number,
         status: response.data.data[0].Status,
@@ -33,8 +42,6 @@ export const fetchTracking = createAsyncThunk<
         citySender: response.data.data[0].CitySender,
         warehouseSender: response.data.data[0].WarehouseSender,
       };
-    } else {
-      return response.data.errors[0];
     }
   } catch (error) {
     if (error instanceof Error) {

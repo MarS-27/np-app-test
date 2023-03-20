@@ -5,7 +5,7 @@ import { IWarehouses, IWarehousesReducerState } from "../../models/interfaces";
 const initialState: IWarehousesReducerState = {
   warehouses: null,
   warehousesLoading: false,
-  warehousesError: null,
+  warehousesError: "",
 };
 
 const warehousesSlice = createSlice({

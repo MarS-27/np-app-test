@@ -8,7 +8,7 @@ import {
 const initialState: IWarehousesTypesReducerState = {
   warehousesTypes: null,
   warehousesTypesLoading: false,
-  warehousesTypesError: null,
+  warehousesTypesError: "",
 };
 
 const warehousesTypesSlice = createSlice({
