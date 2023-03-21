@@ -19,8 +19,9 @@ export default function TrackingPage() {
       component="section"
       sx={{
         margin: "0 auto",
-        paddingTop: "40px",
+        padding: "40px 0",
         display: "flex",
+        flexDirection: { xs: "column", md: "row" },
         justifyContent: "space-between",
         gap: { xs: "10px", md: "20px" },
       }}

@@ -31,7 +31,7 @@ export default function TrackingHistory({ localStorageLength }: HistoryProps) {
 
   return (
     <>
-      <Box sx={{ width: "20%" }}>
+      <Box sx={{ width: { xs: "100%", md: "20%" } }}>
         <Typography
           color="primary"
           variant="h6"
@@ -41,8 +41,10 @@ export default function TrackingHistory({ localStorageLength }: HistoryProps) {
         </Typography>
         <Box
           sx={{
+            width: "100%",
             display: "flex",
-            flexDirection: "column",
+            flexDirection: { xs: "row", md: "column" },
+            flexWrap: { xs: "wrap" },
             justifyContent: "space-between",
             padding: "10px",
             borderColor: "primary.main",
@@ -57,7 +59,7 @@ export default function TrackingHistory({ localStorageLength }: HistoryProps) {
               {trackingHistory.map((docNum) => (
                 <Button
                   key={docNum}
-                  sx={{ height: "40px", width: "100%" }}
+                  sx={{ height: "40px", width: { xs: "130px", md: "100%" } }}
                   variant="text"
                   color="secondary"
                   onClick={() => clickOnDocNumber(docNum)}

@@ -17,8 +17,15 @@ export default function TrackingInfo() {
         backgroundColor: "background.paper",
       }}
     >
-      <Box sx={{ display: "flex", gap: "10px", paddingBottom: "10px" }}>
-        <Typography color="primary" variant="body1">
+      <Box
+        sx={{
+          display: "flex",
+          gap: "10px",
+          paddingBottom: "10px",
+          flexDirection: { xs: "column", md: "row" },
+        }}
+      >
+        <Typography color="primary" variant="body1" sx={{ minWidth: "150px" }}>
           Статус доставки:
         </Typography>
         <Typography color="secondary" variant="body1">
@@ -28,6 +35,7 @@ export default function TrackingInfo() {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           gap: "10px",
           paddingY: "10px",
           borderTopColor: "secondary.main",
@@ -38,15 +46,22 @@ export default function TrackingInfo() {
           borderBottomStyle: "solid",
         }}
       >
-        <Typography color="primary" variant="body1">
+        <Typography color="primary" variant="body1" sx={{ minWidth: "150px" }}>
           Адреса відправки:
         </Typography>
         <Typography color="secondary" variant="body1">
           м. {tracking?.citySender}. {tracking?.warehouseSender}.
         </Typography>
       </Box>
-      <Box sx={{ display: "flex", gap: "10px", paddingTop: "10px" }}>
-        <Typography color="primary" variant="body1">
+      <Box
+        sx={{
+          display: "flex",
+          gap: "10px",
+          paddingTop: "10px",
+          flexDirection: { xs: "column", md: "row" },
+        }}
+      >
+        <Typography color="primary" variant="body1" sx={{ minWidth: "150px" }}>
           Адреса отримання:
         </Typography>
         <Typography color="secondary" variant="body1">
