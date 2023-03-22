@@ -24,13 +24,13 @@ export interface ITrackingReducerState {
 }
 
 export interface IWarehousesReducerState {
-  warehouses: IWarehouses | null;
+  warehouses: IWarehouses[] | null;
   warehousesLoading: boolean;
   warehousesError: string;
 }
 
 export interface IWarehousesTypesReducerState {
-  warehousesTypes: IWarehousesTypes | null;
+  warehousesTypes: IWarehousesTypes[] | null;
   warehousesTypesLoading: boolean;
   warehousesTypesError: string;
 }
@@ -48,8 +48,4 @@ export interface ICustomTheme {
       paper: string;
     };
   };
-}
-
-export interface IDocumentNumber {
-  docNumber: string;
 }

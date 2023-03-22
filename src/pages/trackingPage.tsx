@@ -6,8 +6,6 @@ import Loader from "../components/loader/Loader";
 import Error from "../components/error/Error";
 import TrackingHistory from "../components/tracking/TrackingHistory";
 
-// 20450638954971 ;
-
 export default function TrackingPage() {
   const { tracking, trackingError, trackingLoading } = useAppSelector(
     (state) => state.tracking
@@ -18,7 +16,6 @@ export default function TrackingPage() {
     <Box
       component="section"
       sx={{
-        margin: "0 auto",
         padding: "40px 0",
         display: "flex",
         flexDirection: { xs: "column", md: "row" },

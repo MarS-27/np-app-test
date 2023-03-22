@@ -6,7 +6,7 @@ import { IWarehousesTypes } from "../models/interfaces";
 const NP_API_KEY = process.env.REACT_APP_API_KEY;
 
 export const fetchWarehousesTypes = createAsyncThunk<
-  IWarehousesTypes,
+  IWarehousesTypes[],
   undefined,
   { rejectValue: string }
 >("warehousesTypes/fetchWarehousesTypes", async (_, { rejectWithValue }) => {
@@ -18,12 +18,12 @@ export const fetchWarehousesTypes = createAsyncThunk<
       methodProperties: {},
     });
 
-    if (response.data.success) {
+    if (!response.data.success) {
+      return response.data.errors[0];
+    } else {
       return response.data.data.filter((elem: IWarehousesTypes) =>
         elem.Description.includes("відділення")
       );
-    } else {
-      return response.data.errors[0];
     }
   } catch (error) {
     if (error instanceof Error) {

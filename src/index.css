@@ -23,8 +23,6 @@ a {
 }
 
 .active p,
-.active button,
-.search-input input,
-.search-input label {
+.active button {
   color: #ededed;
 }

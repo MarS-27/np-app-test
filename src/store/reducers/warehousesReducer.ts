@@ -11,7 +11,12 @@ const initialState: IWarehousesReducerState = {
 const warehousesSlice = createSlice({
   name: "warehouses",
   initialState,
-  reducers: {},
+  reducers: {
+    cleanWarehouses: (state) => {
+      state.warehouses = null;
+      state.warehousesError = "";
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchWarehouses.pending.type, (state) => {
@@ -19,9 +24,13 @@ const warehousesSlice = createSlice({
       })
       .addCase(
         fetchWarehouses.fulfilled.type,
-        (state, action: PayloadAction<IWarehouses>) => {
+        (state, action: PayloadAction<IWarehouses[]>) => {
           state.warehousesLoading = false;
-          state.warehouses = action.payload;
+          if (typeof action.payload === "object") {
+            state.warehouses = action.payload;
+          } else {
+            state.warehousesError = action.payload;
+          }
         }
       )
       .addCase(
@@ -33,5 +42,7 @@ const warehousesSlice = createSlice({
       );
   },
 });
+
+export const { cleanWarehouses } = warehousesSlice.actions;
 
 export default warehousesSlice.reducer;

@@ -22,9 +22,13 @@ const warehousesTypesSlice = createSlice({
       })
       .addCase(
         fetchWarehousesTypes.fulfilled.type,
-        (state, action: PayloadAction<IWarehousesTypes>) => {
+        (state, action: PayloadAction<IWarehousesTypes[]>) => {
           state.warehousesTypesLoading = false;
-          state.warehousesTypes = action.payload;
+          if (typeof action.payload === "object") {
+            state.warehousesTypes = action.payload;
+          } else {
+            state.warehousesTypesError = action.payload;
+          }
         }
       )
       .addCase(

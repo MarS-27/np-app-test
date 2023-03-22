@@ -5,12 +5,15 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import SubmitButton from "../buttons/SubmitButton";
 import { SubmitHandler, useForm, useController } from "react-hook-form";
-import { IDocumentNumber } from "../../models/interfaces";
 import { cleanTracking } from "../../store/reducers/trackingReducer";
 import { FormHelperText } from "@mui/material";
 import { TTN_CHECK_PATTERN } from "../../constants/constants";
 import { useEffect } from "react";
 import ClearInputButton from "../buttons/ClearInputButton";
+
+interface IDocumentNumber {
+  docNumber: string;
+}
 
 export default function DocumentNumberForm() {
   const dispatch = useAppDispatch();
@@ -57,8 +60,6 @@ export default function DocumentNumberForm() {
           inputRef={ref}
           value={value}
           onChange={onChange}
-          id="outlined-basic"
-          className="search-input"
           label="Номер ТТН"
           variant="outlined"
           type="text"
@@ -66,6 +67,8 @@ export default function DocumentNumberForm() {
             backgroundColor: "background.paper",
             borderRadius: "6px",
             minWidth: "180px",
+            "& input": { color: "secondary.main" },
+            "& label ": { color: "secondary.main" },
           }}
           error={!!errors.docNumber}
           aria-describedby="error-helper-text"

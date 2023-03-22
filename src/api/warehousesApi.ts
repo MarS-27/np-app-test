@@ -6,7 +6,7 @@ import { IWarehouses } from "../models/interfaces";
 const NP_API_KEY = process.env.REACT_APP_API_KEY;
 
 export const fetchWarehouses = createAsyncThunk<
-  IWarehouses,
+  IWarehouses[],
   string[],
   { rejectValue: string }
 >("warehouses/fetchWarehouses", async (args, { rejectWithValue }) => {
@@ -23,14 +23,16 @@ export const fetchWarehouses = createAsyncThunk<
       },
     });
 
-    if (response.data.success) {
+    if (!response.data.success) {
+      return response.data.errors[0];
+    } else if (!response.data.data.length) {
+      return "У населеному пункті вказаний тип відділень не знайдено";
+    } else {
       return response.data.data.map((elem: Record<string, any>) => {
         return {
           description: elem.Description,
         };
       });
-    } else {
-      return response.data.errors[0];
     }
   } catch (error) {
     if (error instanceof Error) {
