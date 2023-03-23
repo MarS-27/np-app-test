@@ -1,23 +1,33 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import GoToHomepage from "../buttons/GoToHomepage";
 
 type ErrorInfo = {
   errorInfo: string;
 };
 
+const errorStyles = {
+  borderColor: "#d32f2f",
+  borderWidth: "2px",
+  borderStyle: "solid",
+  borderRadius: "6px",
+  backgroundColor: "background.paper",
+};
+
 export default function Error({ errorInfo }: ErrorInfo) {
   return (
     <Box
-      sx={{
-        width: "100%",
-        padding: "10px",
-        borderColor: "#d32f2f",
-        borderWidth: "2px",
-        borderStyle: "solid",
-        borderRadius: "6px",
-        backgroundColor: "background.paper",
-      }}
+      sx={
+        errorInfo === "Упс, сторінку не знайдено"
+          ? {
+              ...errorStyles,
+              width: "70%",
+              padding: "20px",
+              margin: "40px auto",
+            }
+          : { ...errorStyles, width: "100%", padding: "10px" }
+      }
     >
       <ErrorOutlineIcon
         color="error"
@@ -31,6 +41,7 @@ export default function Error({ errorInfo }: ErrorInfo) {
       <Typography color="error" textAlign="center" variant="body1">
         {errorInfo}!
       </Typography>
+      {errorInfo === "Упс, сторінку не знайдено" && <GoToHomepage />}
     </Box>
   );
 }
