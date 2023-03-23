@@ -2,6 +2,7 @@
   "name": "np-app-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mars-27.github.io/np-app-test",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -22,6 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,6 +53,7 @@
     "@types/node": "^18.15.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "gh-pages": "^5.0.0",
     "typescript": "^4.9.5"
   }
 }
