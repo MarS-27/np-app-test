@@ -8,6 +8,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import Select from "@mui/material/Select";
 import SubmitButton from "../buttons/SubmitButton";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { fetchWarehouses } from "../../api/warehousesApi";
 import { cleanWarehouses } from "../../store/reducers/warehousesReducer";
@@ -25,8 +27,6 @@ export default function WarehousesSearchForm() {
   const { control, handleSubmit, reset } = useForm<ISearchParams>();
 
   const onFormSubmit: SubmitHandler<ISearchParams> = (data) => {
-    dispatch(cleanWarehouses());
-    reset({ cityName: "", warehouseType: "" });
     dispatch(
       fetchWarehouses([
         data.cityName.trim(),
@@ -34,6 +34,11 @@ export default function WarehousesSearchForm() {
         WAREHOUSES_START_PAGE,
       ])
     );
+  };
+
+  const clearSearchForm = () => {
+    dispatch(cleanWarehouses());
+    reset({ cityName: "", warehouseType: "" });
   };
 
   return (
@@ -139,6 +144,18 @@ export default function WarehousesSearchForm() {
       />
 
       <SubmitButton buttonName="Знайти" />
+      <Button
+        variant="outlined"
+        sx={{
+          height: "40px",
+          width: "125px",
+          marginTop: "8px",
+        }}
+        startIcon={<DeleteIcon />}
+        onClick={clearSearchForm}
+      >
+        Очистити
+      </Button>
     </Box>
   );
 }
