@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/np-app-test/static/css/main.9102e096.css",
+    "main.js": "/np-app-test/static/js/main.14e38d6d.js",
+    "static/js/787.c5606320.chunk.js": "/np-app-test/static/js/787.c5606320.chunk.js",
+    "index.html": "/np-app-test/index.html",
+    "main.9102e096.css.map": "/np-app-test/static/css/main.9102e096.css.map",
+    "main.14e38d6d.js.map": "/np-app-test/static/js/main.14e38d6d.js.map",
+    "787.c5606320.chunk.js.map": "/np-app-test/static/js/787.c5606320.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9102e096.css",
+    "static/js/main.14e38d6d.js"
+  ]
+}
