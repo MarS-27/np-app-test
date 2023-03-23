@@ -1,16 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API_URL } from "../constants/constants";
+import { API_URL, WAREHOUSES_ON_PAGE } from "../constants/constants";
 import { IWarehouses } from "../models/interfaces";
 
 const NP_API_KEY = process.env.REACT_APP_API_KEY;
 
 export const fetchWarehouses = createAsyncThunk<
-  IWarehouses[],
+  IWarehouses,
   string[],
   { rejectValue: string }
 >("warehouses/fetchWarehouses", async (args, { rejectWithValue }) => {
-  const [city, typeOFWarehouse] = args;
+  const [city, typeOFWarehouse, pageNum] = args;
 
   try {
     const response = await axios.post(API_URL, {
@@ -20,6 +20,8 @@ export const fetchWarehouses = createAsyncThunk<
       methodProperties: {
         CityName: city,
         TypeOfWarehouseRef: typeOFWarehouse,
+        Page: pageNum,
+        Limit: WAREHOUSES_ON_PAGE,
       },
     });
 
@@ -28,11 +30,20 @@ export const fetchWarehouses = createAsyncThunk<
     } else if (!response.data.data.length) {
       return "У населеному пункті вказаний тип відділень не знайдено";
     } else {
-      return response.data.data.map((elem: Record<string, any>) => {
-        return {
-          description: elem.Description,
-        };
-      });
+      const description = response.data.data.map(
+        (elem: Record<string, any>) => {
+          return {
+            description: elem.Description,
+          };
+        }
+      );
+
+      return {
+        city: city,
+        type: typeOFWarehouse,
+        totalCount: response.data.info.totalCount,
+        data: description,
+      };
     }
   } catch (error) {
     if (error instanceof Error) {

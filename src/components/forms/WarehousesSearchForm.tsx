@@ -11,6 +11,7 @@ import SubmitButton from "../buttons/SubmitButton";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { fetchWarehouses } from "../../api/warehousesApi";
 import { cleanWarehouses } from "../../store/reducers/warehousesReducer";
+import { WAREHOUSES_START_PAGE } from "../../constants/constants";
 
 interface ISearchParams {
   cityName: string;
@@ -26,7 +27,13 @@ export default function WarehousesSearchForm() {
   const onFormSubmit: SubmitHandler<ISearchParams> = (data) => {
     dispatch(cleanWarehouses());
     reset({ cityName: "", warehouseType: "" });
-    dispatch(fetchWarehouses([data.cityName.trim(), data.warehouseType]));
+    dispatch(
+      fetchWarehouses([
+        data.cityName.trim(),
+        data.warehouseType,
+        WAREHOUSES_START_PAGE,
+      ])
+    );
   };
 
   return (
@@ -36,6 +43,8 @@ export default function WarehousesSearchForm() {
       autoComplete="off"
       sx={{
         display: "flex",
+        justifyContent: "center",
+        flexWrap: "wrap",
         gap: { xs: "10px", md: "20px" },
         width: { xs: "100%", md: "90%" },
         margin: "0 auto 20px auto",

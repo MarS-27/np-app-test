@@ -24,7 +24,7 @@ const warehousesSlice = createSlice({
       })
       .addCase(
         fetchWarehouses.fulfilled.type,
-        (state, action: PayloadAction<IWarehouses[]>) => {
+        (state, action: PayloadAction<IWarehouses>) => {
           state.warehousesLoading = false;
           if (typeof action.payload === "object") {
             state.warehouses = action.payload;

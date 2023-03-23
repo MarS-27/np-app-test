@@ -7,8 +7,15 @@ export interface ITracking {
   warehouseSender: string;
 }
 
-export interface IWarehouses {
+export interface IWarehouseDescription {
   description: string;
+}
+
+export interface IWarehouses {
+  city: string;
+  type: string;
+  totalCount: number;
+  data: IWarehouseDescription[];
 }
 
 export interface IWarehousesTypes {
@@ -24,7 +31,7 @@ export interface ITrackingReducerState {
 }
 
 export interface IWarehousesReducerState {
-  warehouses: IWarehouses[] | null;
+  warehouses: IWarehouses | null;
   warehousesLoading: boolean;
   warehousesError: string;
 }

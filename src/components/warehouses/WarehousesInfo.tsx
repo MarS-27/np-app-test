@@ -1,27 +1,39 @@
-import { useEffect } from "react";
 import { useAppSelector } from "../../hooks/selector";
-import { useAppDispatch } from "../../hooks/dispatch";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 export default function WarehousesInfo() {
-  //   const dispatch = useAppDispatch();
-
   const { warehouses } = useAppSelector((state) => state.warehouses);
-  console.log(warehouses);
-
-  //   useEffect(() => {
-  //     dispatch(fetchWarehousesTypes());
-  //   }, []);
 
   return (
     <Box
       sx={{
-        width: "100%",
-        padding: "40px 0",
-        color: "secondary.main",
+        width: { xs: "100%", md: "80%" },
+        margin: "0 auto",
+        padding: "10px 20px",
+        borderColor: "primary.main",
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderRadius: "6px",
+        backgroundColor: "background.paper",
       }}
     >
-      Found!
+      {warehouses?.data.map((warehouse) => (
+        <Typography
+          key={warehouse.description}
+          color="secondary"
+          variant="body1"
+          sx={{
+            padding: "10px 0",
+            borderBottomColor: "secondary.main",
+            borderBottomWidth: "1px",
+            borderBottomStyle: "solid",
+            ":last-of-type": { borderBottom: "none" },
+          }}
+        >
+          {warehouse.description}.
+        </Typography>
+      ))}
     </Box>
   );
 }
