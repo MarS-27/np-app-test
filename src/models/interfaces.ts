@@ -1,3 +1,5 @@
+import { PaletteMode } from "@mui/material";
+
 export interface ITracking {
   number: string;
   status: string;
@@ -44,6 +46,7 @@ export interface IWarehousesTypesReducerState {
 
 export interface ICustomTheme {
   palette: {
+    mode: PaletteMode;
     primary: {
       main: string;
     };

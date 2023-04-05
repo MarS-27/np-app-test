@@ -6,10 +6,14 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import NavigationMobile from "./NavigationMobile";
+import ThemeButton from "../buttons/ThemeButton";
 
 export default function Header() {
   return (
-    <AppBar position="static" sx={{ backgroundColor: "background.paper" }}>
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: "background.paper", zIndex: "999" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <MailOutlineIcon color="primary" sx={{ display: "flex", mr: 2 }} />
@@ -26,11 +30,12 @@ export default function Header() {
                 letterSpacing: ".3rem",
               }}
             >
-              Tracking App
+              Tracking
             </Typography>
           </Link>
           <NavigationMobile />
           <Navigation />
+          <ThemeButton />
         </Toolbar>
       </Container>
     </AppBar>

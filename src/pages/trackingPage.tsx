@@ -16,7 +16,7 @@ export default function TrackingPage() {
     <Box
       component="section"
       sx={{
-        padding: "40px 0",
+        margin: "40px 0",
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         justifyContent: "space-between",

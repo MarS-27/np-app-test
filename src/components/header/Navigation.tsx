@@ -14,14 +14,10 @@ export default function Navigation() {
       }}
     >
       <NavLink to="/">
-        <Button color="primary" sx={{ my: 2, display: "block" }}>
-          Трекінг
-        </Button>
+        <Button sx={{ my: 2, display: "block" }}>Трекінг</Button>
       </NavLink>
       <NavLink to="/warehouses">
-        <Button color="primary" sx={{ my: 2, display: "block" }}>
-          Відділення
-        </Button>
+        <Button sx={{ my: 2, display: "block" }}>Відділення</Button>
       </NavLink>
     </Box>
   );

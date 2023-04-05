@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { useAppDispatch } from "../../hooks/dispatch";
-import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { cleanTracking } from "../../store/reducers/trackingReducer";
 
@@ -22,16 +22,18 @@ export default function ClearHistoryButton({
   };
 
   return (
-    <IconButton
-      color="primary"
-      aria-label="delete"
-      size="medium"
-      onClick={clearTrackingHistory}
+    <Button
+      variant="outlined"
       sx={{
+        height: "40px",
+        width: "125px",
+        marginTop: "10px",
         alignSelf: "center",
       }}
+      startIcon={<DeleteIcon />}
+      onClick={clearTrackingHistory}
     >
-      <DeleteIcon fontSize="inherit" />
-    </IconButton>
+      Очистити
+    </Button>
   );
 }

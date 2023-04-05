@@ -2,25 +2,15 @@ import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { TTN_CHECK_PATTERN } from "../../constants/constants";
-import Button from "@mui/material/Button";
-import { useAppDispatch } from "../../hooks/dispatch";
-import { fetchTracking } from "../../api/trackingApi";
-import { cleanTracking } from "../../store/reducers/trackingReducer";
 import ClearHistoryButton from "../buttons/ClearHistoryButton";
+import TrackingHistoryItem from "./TrackingHistoryItem";
 
 interface HistoryProps {
   localStorageLength: number;
 }
 
 export default function TrackingHistory({ localStorageLength }: HistoryProps) {
-  const dispatch = useAppDispatch();
-
   const [trackingHistory, setTrackingHistory] = useState<string[]>([]);
-
-  const clickOnDocNumber = (docNum: string) => {
-    dispatch(cleanTracking());
-    dispatch(fetchTracking(docNum));
-  };
 
   useEffect(() => {
     const localStorageValues = Object.values(localStorage).filter((value) =>
@@ -57,15 +47,12 @@ export default function TrackingHistory({ localStorageLength }: HistoryProps) {
           {trackingHistory.length ? (
             <>
               {trackingHistory.map((docNum) => (
-                <Button
+                <TrackingHistoryItem
                   key={docNum}
-                  sx={{ height: "40px", width: { xs: "130px", md: "100%" } }}
-                  variant="text"
-                  color="secondary"
-                  onClick={() => clickOnDocNumber(docNum)}
-                >
-                  {docNum}
-                </Button>
+                  docNum={docNum}
+                  setTrackingHistory={setTrackingHistory}
+                  trackingHistory={trackingHistory}
+                />
               ))}
               <ClearHistoryButton
                 setTrackingHistory={setTrackingHistory}

@@ -2,14 +2,19 @@ import { RouterProvider } from "react-router-dom";
 import { routing } from "./router/routing";
 import { ThemeProvider } from "@mui/system";
 import { CssBaseline } from "@mui/material";
-import { theme } from "./theme/theme";
+import useColorTheme from "./hooks/colorTheme";
+import { ColorModeProvider } from "./context/themeContext";
 
 function App() {
+  const { colorMode, theme } = useColorTheme();
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <RouterProvider router={routing} />
-    </ThemeProvider>
+    <ColorModeProvider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <RouterProvider router={routing} />
+      </ThemeProvider>
+    </ColorModeProvider>
   );
 }
 

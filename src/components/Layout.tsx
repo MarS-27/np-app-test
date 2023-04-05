@@ -10,7 +10,7 @@ export default function Layout() {
         component="main"
         maxWidth="xl"
         sx={{
-          backgroundColor: "#100e17",
+          backgroundColor: "background.default",
         }}
       >
         <Outlet></Outlet>
