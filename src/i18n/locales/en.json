@@ -1,0 +1,23 @@
+{
+  "url": "/en",
+  "tracking": "TRACKING",
+  "warehouses": "WAREHOUSES",
+  "getStatus": "TTN status",
+  "history": "History",
+  "emptyHistory": "You haven't tracked anything!",
+  "clean": "Clean",
+  "docNumInputLabel": "TTN number",
+  "docNumInputError": "Must contain 14 digits!",
+  "cityInputLabel": "City",
+  "cityInputError": "You haven't entered a city name!",
+  "warehouseTypeInputLabel": "Type of warehouse",
+  "warehouseTypeInputError": "You haven't entered type of warehouse!",
+  "find": "Find",
+  "goHome": "Go home",
+  "deliveryStatus": "Delivery status:",
+  "sendingAddress": "Sending address:",
+  "receivingАddress": "Receiving address:",
+  "notFoundTTN": "TTN number not found",
+  "notFoundWarehouses": "The entered type of warehouses was not found in the city",
+  "pageNotFound": "Oops, page not found"
+}

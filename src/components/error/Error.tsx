@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import GoToHomepage from "../buttons/GoToHomepage";
+import { useTranslation } from "react-i18next";
 
 type ErrorInfo = {
   errorInfo: string;
@@ -16,6 +17,8 @@ const errorStyles = {
 };
 
 export default function Error({ errorInfo }: ErrorInfo) {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={
@@ -39,7 +42,15 @@ export default function Error({ errorInfo }: ErrorInfo) {
         }}
       />
       <Typography color="error" textAlign="center" variant="body1">
-        {errorInfo}!
+        {errorInfo === "Упс, сторінку не знайдено"
+          ? t("pageNotFound")
+          : errorInfo === "Номер ТТН не знайдено"
+          ? t("notFoundTTN")
+          : errorInfo ===
+            "У населеному пункті вказаний тип відділень не знайдено"
+          ? t("notFoundWarehouses")
+          : errorInfo}
+        !
       </Typography>
       {errorInfo === "Упс, сторінку не знайдено" && <GoToHomepage />}
     </Box>

@@ -9,7 +9,8 @@ import { cleanTracking } from "../../store/reducers/trackingReducer";
 import { FormHelperText } from "@mui/material";
 import { TTN_CHECK_PATTERN } from "../../constants/constants";
 import { useEffect } from "react";
-import ClearInputButton from "../buttons/ClearInputButton";
+import CleanInputButton from "../buttons/CleanInputButton";
+import { useTranslation } from "react-i18next";
 
 interface IDocumentNumber {
   docNumber: string;
@@ -17,6 +18,9 @@ interface IDocumentNumber {
 
 export default function DocumentNumberForm() {
   const dispatch = useAppDispatch();
+
+  const { t } = useTranslation();
+
   const { tracking } = useAppSelector((state) => state.tracking);
 
   const { control, handleSubmit } = useForm<IDocumentNumber>();
@@ -60,7 +64,7 @@ export default function DocumentNumberForm() {
           inputRef={ref}
           value={value}
           onChange={onChange}
-          label="Номер ТТН"
+          label={t("docNumInputLabel")}
           variant="outlined"
           type="text"
           sx={{
@@ -74,11 +78,15 @@ export default function DocumentNumberForm() {
           aria-describedby="error-helper-text"
         />
         {errors.docNumber?.type === "pattern" && (
-          <FormHelperText error id="error-helper-text">
-            Має містити 14 цифр!
+          <FormHelperText
+            error
+            id="error-helper-text"
+            sx={{ textAlign: "center" }}
+          >
+            {t("docNumInputError")}
           </FormHelperText>
         )}
-        <ClearInputButton error={!!errors.docNumber} onChange={onChange} />
+        <CleanInputButton error={!!errors.docNumber} onChange={onChange} />
       </Box>
 
       <SubmitButton buttonName="Статус ТТН" />

@@ -1,0 +1,23 @@
+{
+  "url": "/",
+  "tracking": "ТРЕКІНГ",
+  "warehouses": "ВІДДІЛЕННЯ",
+  "getStatus": "Статус ТТН",
+  "history": "Історія",
+  "emptyHistory": "Ви нічого не відстежували!",
+  "clean": "Очистити",
+  "docNumInputLabel": "Номер ТТН",
+  "docNumInputError": "Має містити 14 цифр!",
+  "cityInputLabel": "Населений пункт",
+  "cityInputError": "Ви не ввели назву міста!",
+  "warehouseTypeInputLabel": "Тип віділення",
+  "warehouseTypeInputError": "Ви не ввели тип відділення!",
+  "find": "Знайти",
+  "goHome": "На головну",
+  "deliveryStatus": "Статус доставки:",
+  "sendingAddress": "Адреса відправки:",
+  "receivingАddress": "Адреса отримання:",
+  "notFoundTTN": "Номер ТТН не знайдено",
+  "notFoundWarehouses": "У населеному пункті вказаний тип відділень не знайдено",
+  "pageNotFound": "Упс, сторінку не знайдено"
+}

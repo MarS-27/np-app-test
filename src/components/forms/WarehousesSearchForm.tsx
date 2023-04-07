@@ -14,6 +14,7 @@ import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { fetchWarehouses } from "../../api/warehousesApi";
 import { cleanWarehouses } from "../../store/reducers/warehousesReducer";
 import { WAREHOUSES_START_PAGE } from "../../constants/constants";
+import { useTranslation } from "react-i18next";
 
 interface ISearchParams {
   cityName: string;
@@ -22,6 +23,9 @@ interface ISearchParams {
 
 export default function WarehousesSearchForm() {
   const dispatch = useAppDispatch();
+
+  const { t } = useTranslation();
+
   const { warehousesTypes } = useAppSelector((state) => state.warehousesTypes);
 
   const { control, handleSubmit, reset } = useForm<ISearchParams>();
@@ -69,7 +73,7 @@ export default function WarehousesSearchForm() {
               inputRef={ref}
               value={value}
               onChange={onChange}
-              label="Населений пункт"
+              label={t("cityInputLabel")}
               variant="outlined"
               type="text"
               sx={{
@@ -83,8 +87,12 @@ export default function WarehousesSearchForm() {
               aria-describedby="error-helper-text"
             />
             {errors.cityName?.type === "required" && (
-              <FormHelperText error id="error-helper-text">
-                Ви не ввели назву міста!
+              <FormHelperText
+                error
+                id="error-helper-text"
+                sx={{ mx: "0", textAlign: "center" }}
+              >
+                {t("cityInputError")}
               </FormHelperText>
             )}
           </FormControl>
@@ -107,12 +115,14 @@ export default function WarehousesSearchForm() {
               "& div": { color: "secondary.main" },
             }}
           >
-            <InputLabel id="select-label">Тип відділення</InputLabel>
+            <InputLabel id="select-label">
+              {t("warehouseTypeInputLabel")}
+            </InputLabel>
             <Select
               labelId="select-label"
               inputRef={ref}
               value={value}
-              label="Тип відділення"
+              label={t("warehouseTypeInputLabel")}
               onChange={onChange}
               sx={{
                 backgroundColor: "background.paper",
@@ -135,8 +145,12 @@ export default function WarehousesSearchForm() {
               ))}
             </Select>
             {errors.warehouseType?.type === "required" && (
-              <FormHelperText error id="select-helper-text">
-                Ви не ввели назву міста!
+              <FormHelperText
+                error
+                id="select-helper-text"
+                sx={{ mx: "0", textAlign: "center" }}
+              >
+                {t("warehouseTypeInputError")}
               </FormHelperText>
             )}
           </FormControl>
@@ -154,7 +168,7 @@ export default function WarehousesSearchForm() {
         startIcon={<DeleteIcon />}
         onClick={clearSearchForm}
       >
-        Очистити
+        {t("clean")}
       </Button>
     </Box>
   );

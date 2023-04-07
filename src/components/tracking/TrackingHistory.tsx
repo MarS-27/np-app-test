@@ -4,12 +4,14 @@ import Typography from "@mui/material/Typography";
 import { TTN_CHECK_PATTERN } from "../../constants/constants";
 import ClearHistoryButton from "../buttons/ClearHistoryButton";
 import TrackingHistoryItem from "./TrackingHistoryItem";
+import { useTranslation } from "react-i18next";
 
 interface HistoryProps {
   localStorageLength: number;
 }
 
 export default function TrackingHistory({ localStorageLength }: HistoryProps) {
+  const { t } = useTranslation();
   const [trackingHistory, setTrackingHistory] = useState<string[]>([]);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function TrackingHistory({ localStorageLength }: HistoryProps) {
           variant="h6"
           sx={{ textAlign: "center", marginBottom: "10px" }}
         >
-          Історія
+          {t("history")}
         </Typography>
         <Box
           sx={{
@@ -61,7 +63,7 @@ export default function TrackingHistory({ localStorageLength }: HistoryProps) {
             </>
           ) : (
             <Typography color="secondary" variant="body2" textAlign="center">
-              Ви нічого не відстежували
+              {t("emptyHistory")}
             </Typography>
           )}
         </Box>

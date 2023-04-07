@@ -6,8 +6,10 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function NavigationMobile() {
+  const { t } = useTranslation();
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -57,14 +59,14 @@ export default function NavigationMobile() {
         <MenuItem onClick={handleCloseNavMenu}>
           <NavLink to="/">
             <Typography color="primary" textAlign="center">
-              Трекінг
+              {t("tracking")}
             </Typography>
           </NavLink>
         </MenuItem>
         <MenuItem onClick={handleCloseNavMenu}>
           <NavLink to="/warehouses">
             <Typography color="primary" textAlign="center">
-              Відділення
+              {t("warehouses")}
             </Typography>
           </NavLink>
         </MenuItem>

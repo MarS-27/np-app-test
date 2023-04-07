@@ -6,7 +6,7 @@ type ButtonProps = {
   error: Boolean;
 };
 
-export default function ClearInputButton({ onChange, error }: ButtonProps) {
+export default function CleanInputButton({ onChange, error }: ButtonProps) {
   return (
     <IconButton
       color={error ? "error" : "primary"}

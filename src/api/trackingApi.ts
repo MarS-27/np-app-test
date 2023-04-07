@@ -27,7 +27,7 @@ export const fetchTracking = createAsyncThunk<
     if (!response.data.success) {
       return response.data.errors[0];
     } else if (response.data.data[0].Status === "Номер не найден") {
-      return "Номер посилки не знайдено";
+      return "Номер ТТН не знайдено";
     } else {
       localStorage.setItem(
         response.data.data[0].Number,

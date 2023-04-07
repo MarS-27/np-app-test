@@ -1,9 +1,12 @@
 import { useAppSelector } from "../../hooks/selector";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { useTranslation } from "react-i18next";
 
 export default function TrackingInfo() {
   const { tracking } = useAppSelector((state) => state.tracking);
+
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -26,7 +29,7 @@ export default function TrackingInfo() {
         }}
       >
         <Typography color="primary" variant="body1" sx={{ minWidth: "150px" }}>
-          Статус доставки:
+          {t("deliveryStatus")}
         </Typography>
         <Typography color="secondary" variant="body1">
           {tracking?.status}
@@ -47,7 +50,7 @@ export default function TrackingInfo() {
         }}
       >
         <Typography color="primary" variant="body1" sx={{ minWidth: "150px" }}>
-          Адреса відправки:
+          {t("sendingAddress")}
         </Typography>
         <Typography color="secondary" variant="body1">
           м. {tracking?.citySender}. {tracking?.warehouseSender}.
@@ -62,7 +65,7 @@ export default function TrackingInfo() {
         }}
       >
         <Typography color="primary" variant="body1" sx={{ minWidth: "150px" }}>
-          Адреса отримання:
+          {t("receivingАddress")}
         </Typography>
         <Typography color="secondary" variant="body1">
           м. {tracking?.cityRecipient}. {tracking?.warehouseRecipient}.

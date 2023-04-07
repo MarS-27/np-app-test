@@ -7,8 +7,16 @@ import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import NavigationMobile from "./NavigationMobile";
 import ThemeButton from "../buttons/ThemeButton";
+import i18next from "i18next";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 export default function Header() {
+  const onLanguageChange = (lang: "ua" | "en") => {
+    i18next.changeLanguage(lang);
+    localStorage.setItem("language", lang);
+  };
+
   return (
     <AppBar
       position="static"
@@ -35,6 +43,10 @@ export default function Header() {
           </Link>
           <NavigationMobile />
           <Navigation />
+          <ButtonGroup variant="text">
+            <Button onClick={() => onLanguageChange("ua")}>UA</Button>
+            <Button onClick={() => onLanguageChange("en")}>EN</Button>
+          </ButtonGroup>
           <ThemeButton />
         </Toolbar>
       </Container>

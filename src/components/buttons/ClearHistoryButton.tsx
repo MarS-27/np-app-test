@@ -3,6 +3,7 @@ import { useAppDispatch } from "../../hooks/dispatch";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { cleanTracking } from "../../store/reducers/trackingReducer";
+import { useTranslation } from "react-i18next";
 
 type ButtonProps = {
   trackingHistory: string[];
@@ -14,6 +15,8 @@ export default function ClearHistoryButton({
   trackingHistory,
 }: ButtonProps) {
   const dispatch = useAppDispatch();
+
+  const { t } = useTranslation();
 
   const clearTrackingHistory = () => {
     trackingHistory.forEach((docNum) => localStorage.removeItem(docNum));
@@ -33,7 +36,7 @@ export default function ClearHistoryButton({
       startIcon={<DeleteIcon />}
       onClick={clearTrackingHistory}
     >
-      Очистити
+      {t("clean")}
     </Button>
   );
 }

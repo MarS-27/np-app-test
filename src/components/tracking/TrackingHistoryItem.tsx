@@ -35,7 +35,7 @@ export default function TrackingHistoryItem({
       <Button
         sx={{
           height: "40px",
-          width: { xs: "130px", md: "100%" },
+          width: { xs: "120px", md: "100%" },
         }}
         variant="text"
         color="secondary"
