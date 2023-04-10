@@ -31,11 +31,11 @@ export default function TrackingHistoryItem({
   };
 
   return (
-    <Box sx={{ display: "flex", gap: "5px" }}>
+    <Box sx={{ display: "flex" }}>
       <Button
         sx={{
           height: "40px",
-          width: { xs: "120px", md: "100%" },
+          width: { xs: "120px", md: "130%" },
         }}
         variant="text"
         color="secondary"

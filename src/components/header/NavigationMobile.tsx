@@ -7,6 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import ChangeLanguageButtonsGroup from "../buttons/ChangeLanguageButtons";
 
 export default function NavigationMobile() {
   const { t } = useTranslation();
@@ -70,6 +71,7 @@ export default function NavigationMobile() {
             </Typography>
           </NavLink>
         </MenuItem>
+        <ChangeLanguageButtonsGroup />
       </Menu>
     </Box>
   );
