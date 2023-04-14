@@ -31,11 +31,17 @@ export default function TrackingHistoryItem({
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
       <Button
         sx={{
           height: "40px",
-          width: { xs: "120px", md: "130%" },
+          width: "140px",
         }}
         variant="text"
         color="secondary"

@@ -4,13 +4,14 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { cleanTracking } from "../../store/reducers/trackingReducer";
 import { useTranslation } from "react-i18next";
+import Box from "@mui/material/Box";
 
 type ButtonProps = {
   trackingHistory: string[];
   setTrackingHistory: Dispatch<SetStateAction<string[]>>;
 };
 
-export default function ClearHistoryButton({
+export default function CleanHistoryButton({
   setTrackingHistory,
   trackingHistory,
 }: ButtonProps) {
@@ -18,25 +19,32 @@ export default function ClearHistoryButton({
 
   const { t } = useTranslation();
 
-  const clearTrackingHistory = () => {
+  const cleanTrackingHistory = () => {
     trackingHistory.forEach((docNum) => localStorage.removeItem(docNum));
     dispatch(cleanTracking());
     setTrackingHistory([]);
   };
 
   return (
-    <Button
-      variant="outlined"
+    <Box
       sx={{
-        height: "40px",
-        width: "125px",
-        marginTop: "10px",
-        alignSelf: "center",
+        width: "168px",
+        display: "flex",
+        justifyContent: "center",
+        marginTop: { xs: "0", md: "8px" },
       }}
-      startIcon={<DeleteIcon />}
-      onClick={clearTrackingHistory}
     >
-      {t("clean")}
-    </Button>
+      <Button
+        variant="outlined"
+        sx={{
+          height: "40px",
+          width: "125px",
+        }}
+        startIcon={<DeleteIcon />}
+        onClick={cleanTrackingHistory}
+      >
+        {t("clean")}
+      </Button>
+    </Box>
   );
 }

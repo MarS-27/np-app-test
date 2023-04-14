@@ -39,7 +39,7 @@ export default function WarehousesPage() {
       sx={{
         width: "100%",
         maxWidth: "1200px",
-        margin: "40px auto",
+        margin: "0 auto 20px auto",
       }}
     >
       {warehousesTypesLoading ? (

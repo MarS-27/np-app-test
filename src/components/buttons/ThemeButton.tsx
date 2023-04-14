@@ -5,7 +5,7 @@ import ModeNightIcon from "@mui/icons-material/ModeNight";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import ColorModeContext from "../../context/themeContext";
 
-function ThemeButton() {
+export default function ThemeButton() {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   return (
@@ -23,5 +23,3 @@ function ThemeButton() {
     </IconButton>
   );
 }
-
-export default ThemeButton;

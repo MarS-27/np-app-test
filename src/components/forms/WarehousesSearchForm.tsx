@@ -115,7 +115,7 @@ export default function WarehousesSearchForm() {
               "& div": { color: "secondary.main" },
             }}
           >
-            <InputLabel id="select-label">
+            <InputLabel id="select-label" error={!!errors.warehouseType}>
               {t("warehouseTypeInputLabel")}
             </InputLabel>
             <Select
